@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Making Money with Claude — $19</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --deep:#0A2218;
+  --forest:#14532D;
+  --green:#047857;
+  --lime:#16A34A;
+  --gold:#D97706;
+  --lgold:#F59E0B;
+  --cream:#FEFCE8;
+  --softg:#D1FAE5;
+  --light:#F0FDF4;
+  --gray:#64748B;
+  --dark:#1E293B;
+  --white:#FFFFFF;
+  --border:#E2E8F0;
+  --red:#B91C1C;
+}
+
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--dark);background:var(--white);line-height:1.7;overflow-x:hidden;}
+
+/* ── ANNOUNCEMENT BAR ── */
+.ann-bar{background:var(--deep);color:var(--lgold);text-align:center;padding:10px 20px;font-size:13px;font-weight:600;letter-spacing:.3px;}
+.ann-bar span{color:var(--white);}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(170deg,var(--deep) 0%,#0F3320 60%,var(--forest) 100%);padding:80px 24px 90px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(22,163,74,.18) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(217,119,6,.12) 0%,transparent 70%);pointer-events:none;}
+
+.hero-eyebrow{display:inline-block;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.4);color:var(--lgold);font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:7px 18px;border-radius:40px;margin-bottom:28px;}
+
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,68px);font-weight:900;color:var(--white);line-height:1.08;margin-bottom:24px;max-width:860px;margin-left:auto;margin-right:auto;}
+.hero h1 em{color:var(--lgold);font-style:normal;}
+
+.hero-sub{font-size:clamp(16px,2.5vw,20px);color:rgba(255,255,255,.75);max-width:620px;margin:0 auto 44px;line-height:1.7;}
+
+.price-pill{display:inline-flex;align-items:center;gap:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:60px;padding:10px 24px 10px 16px;margin-bottom:36px;}
+.price-was{font-size:16px;color:rgba(255,255,255,.4);text-decoration:line-through;}
+.price-now{font-size:28px;font-weight:800;color:var(--lgold);}
+.price-save{background:var(--red);color:var(--white);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.5px;}
+
+.hero-cta{display:inline-block;background:linear-gradient(135deg,var(--lgold),var(--gold));color:var(--deep);font-size:18px;font-weight:800;padding:20px 52px;border-radius:8px;text-decoration:none;letter-spacing:.3px;transition:transform .15s,box-shadow .15s;box-shadow:0 8px 32px rgba(217,119,6,.4);}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(217,119,6,.5);}
+
+.hero-micro{font-size:13px;color:rgba(255,255,255,.4);margin-top:14px;}
+.hero-micro span{color:rgba(255,255,255,.65);}
+
+.hero-badges{display:flex;justify-content:center;gap:28px;margin-top:52px;flex-wrap:wrap;}
+.badge{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);font-size:13px;}
+.badge-icon{font-size:18px;}
+
+/* ── SECTIONS ── */
+.section{padding:80px 24px;}
+.section-inner{max-width:860px;margin:0 auto;}
+.section-inner.wide{max-width:1060px;}
+
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);color:var(--deep);line-height:1.15;margin-bottom:16px;}
+h2 em{color:var(--green);font-style:normal;}
+.section-sub{font-size:17px;color:var(--gray);max-width:600px;line-height:1.75;}
+
+/* ── PAIN SECTION ── */
+.pain{background:var(--light);}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px;}
+.pain-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;gap:16px;align-items:flex-start;}
+.pain-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.pain-card h3{font-size:15px;font-weight:700;color:var(--deep);margin-bottom:6px;}
+.pain-card p{font-size:14px;color:var(--gray);line-height:1.6;}
+
+/* ── PROMISE ── */
+.promise{background:var(--deep);}
+.promise h2{color:var(--white);}
+.promise h2 em{color:var(--lgold);}
+.promise-body{font-size:18px;color:rgba(255,255,255,.75);line-height:1.85;max-width:700px;margin-top:24px;}
+.promise-body strong{color:var(--white);}
+
+/* ── WHAT'S INSIDE ── */
+.chapters{display:flex;flex-direction:column;gap:0;margin-top:44px;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.chapter-row{display:grid;grid-template-columns:72px 1fr;align-items:stretch;}
+.chapter-row:not(:last-child){border-bottom:1px solid var(--border);}
+.chapter-num{background:var(--deep);color:var(--lgold);font-family:'Playfair Display',serif;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.chapter-body{padding:20px 24px;background:var(--white);}
+.chapter-body h3{font-size:15px;font-weight:700;color:var(--deep);margin-bottom:4px;}
+.chapter-body p{font-size:13px;color:var(--gray);line-height:1.6;}
+.chapter-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:20px;margin-bottom:6px;}
+.tag-fast{background:#DCFCE7;color:var(--forest);}
+.tag-scale{background:#DBEAFE;color:#1D4ED8;}
+.tag-passive{background:var(--cream);color:var(--gold);}
+.tag-strategy{background:#EDE9FE;color:#5B21B6;}
+
+/* ── BONUSES ── */
+.bonuses-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:44px;}
+.bonus-card{background:var(--white);border:2px solid var(--border);border-radius:12px;padding:24px;text-align:center;position:relative;}
+.bonus-card::before{content:'BONUS';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--white);font-size:10px;font-weight:800;letter-spacing:1.5px;padding:3px 12px;border-radius:0 0 8px 8px;}
+.bonus-icon{font-size:36px;margin:16px 0 12px;}
+.bonus-title{font-size:14px;font-weight:700;color:var(--deep);margin-bottom:6px;}
+.bonus-desc{font-size:13px;color:var(--gray);line-height:1.6;}
+.bonus-val{font-size:13px;font-weight:700;color:var(--green);margin-top:10px;}
+
+/* ── FOR WHO ── */
+.for-who{background:var(--light);}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px;}
+.who-card{border-radius:12px;padding:28px;}
+.who-card.yes{background:var(--softg);border:1px solid #6EE7B7;}
+.who-card.no{background:#FEF2F2;border:1px solid #FECACA;}
+.who-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;}
+.who-card.yes .who-title{color:var(--forest);}
+.who-card.no .who-title{color:var(--red);}
+.who-list{list-style:none;padding:0;}
+.who-list li{font-size:14px;color:var(--dark);padding:6px 0;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:10px;line-height:1.5;}
+.who-list li:last-child{border-bottom:none;}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px;}
+.testi-card{background:var(--deep);border-radius:12px;padding:28px;}
+.testi-stars{color:var(--lgold);font-size:15px;letter-spacing:2px;margin-bottom:14px;}
+.testi-text{font-size:15px;color:rgba(255,255,255,.82);line-height:1.75;font-style:italic;margin-bottom:18px;}
+.testi-author{font-size:13px;font-weight:700;color:var(--lgold);}
+.testi-role{font-size:12px;color:rgba(255,255,255,.4);margin-top:2px;}
+
+/* ── AUTHOR ── */
+.author{background:var(--deep);}
+.author-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.author h2{color:var(--white);}
+.author h2 em{color:var(--lgold);}
+.author-body{font-size:16px;color:rgba(255,255,255,.72);line-height:1.85;margin-top:20px;}
+.author-body strong{color:var(--white);}
+.author-right{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;}
+.author-right h3{font-size:14px;font-weight:700;color:var(--lgold);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;}
+.cred-list{list-style:none;padding:0;}
+.cred-list li{font-size:14px;color:rgba(255,255,255,.75);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;gap:12px;}
+.cred-list li:last-child{border-bottom:none;}
+.cred-list li::before{content:'✓';color:var(--lime);font-weight:700;flex-shrink:0;}
+
+/* ── OBJECTIONS ── */
+.faq-list{margin-top:44px;display:flex;flex-direction:column;gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.faq-item{background:var(--white);padding:24px 28px;}
+.faq-item:not(:last-child){border-bottom:1px solid var(--border);}
+.faq-q{font-size:16px;font-weight:700;color:var(--deep);margin-bottom:10px;display:flex;gap:12px;}
+.faq-q::before{content:'Q';background:var(--deep);color:var(--lgold);font-size:11px;font-weight:800;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.faq-a{font-size:15px;color:var(--gray);line-height:1.75;padding-left:36px;}
+
+/* ── GUARANTEE ── */
+.guarantee{background:var(--light);border:2px solid var(--green);border-radius:16px;padding:48px;text-align:center;max-width:680px;margin:0 auto;}
+.guarantee-icon{font-size:56px;margin-bottom:16px;}
+.guarantee h3{font-family:'Playfair Display',serif;font-size:28px;color:var(--deep);margin-bottom:14px;}
+.guarantee p{font-size:16px;color:var(--gray);line-height:1.75;}
+
+/* ── FINAL CTA ── */
+.final-cta{background:linear-gradient(170deg,var(--deep) 0%,#0F3320 100%);padding:100px 24px;text-align:center;}
+.final-cta h2{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,54px);color:var(--white);margin-bottom:20px;max-width:760px;margin-left:auto;margin-right:auto;}
+.final-cta h2 em{color:var(--lgold);font-style:normal;}
+.final-cta p{font-size:18px;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 40px;line-height:1.75;}
+
+.cta-box{display:inline-block;max-width:480px;width:100%;}
+.cta-price-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px;}
+.cta-was{font-size:20px;color:rgba(255,255,255,.35);text-decoration:line-through;}
+.cta-now{font-size:44px;font-weight:800;color:var(--lgold);font-family:'Playfair Display',serif;}
+.cta-period{font-size:14px;color:rgba(255,255,255,.5);align-self:flex-end;padding-bottom:8px;}
+
+.big-cta{display:block;background:linear-gradient(135deg,var(--lgold),var(--gold));color:var(--deep);font-size:20px;font-weight:800;padding:22px 48px;border-radius:10px;text-decoration:none;letter-spacing:.3px;transition:transform .15s,box-shadow .15s;box-shadow:0 10px 40px rgba(217,119,6,.45);margin-bottom:14px;}
+.big-cta:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(217,119,6,.55);}
+
+.cta-sub{font-size:13px;color:rgba(255,255,255,.4);}
+.cta-sub span{color:rgba(255,255,255,.65);}
+
+.includes-strip{display:flex;justify-content:center;gap:24px;margin-top:36px;flex-wrap:wrap;}
+.inc-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.55);}
+.inc-item::before{content:'✓';color:var(--lime);font-weight:700;}
+
+/* ── STICKY BAR ── */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:var(--deep);border-top:1px solid rgba(255,255,255,.1);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:100;transform:translateY(100%);transition:transform .3s ease;flex-wrap:wrap;}
+.sticky-bar.visible{transform:translateY(0);}
+.sticky-bar-left{display:flex;align-items:center;gap:12px;}
+.sticky-bar-title{font-size:14px;font-weight:700;color:var(--white);}
+.sticky-bar-price{display:flex;align-items:center;gap:8px;}
+.sticky-was{font-size:13px;color:rgba(255,255,255,.35);text-decoration:line-through;}
+.sticky-now{font-size:20px;font-weight:800;color:var(--lgold);}
+.sticky-cta{background:linear-gradient(135deg,var(--lgold),var(--gold));color:var(--deep);font-size:14px;font-weight:800;padding:12px 28px;border-radius:6px;text-decoration:none;white-space:nowrap;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:720px){
+  .pain-grid,.who-grid,.testi-grid,.bonuses-grid,.author-inner{grid-template-columns:1fr;}
+  .hero{padding:60px 20px 70px;}
+  .hero-badges{gap:16px;}
+  .section{padding:60px 20px;}
+  .chapter-num{font-size:18px;min-width:60px;}
+  .sticky-bar{justify-content:center;}
+  .includes-strip{gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">
+  🔥 Launch Week Special — Get the full playbook for just <span>$19</span> (reg. $97). Limited time.
+</div>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-left">
+    <div class="sticky-bar-title">Making Money with Claude</div>
+    <div class="sticky-bar-price">
+      <span class="sticky-was">$97</span>
+      <span class="sticky-now">$19</span>
+    </div>
+  </div>
+  <a class="sticky-cta" href="https://keloshiogwemue.gumroad.com/l/tfezov" target="_blank">Get Instant Access →</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">Book 6 · Claude Mastery Playbook Series</div>
+  <h1>You're Already Using Claude.<br>Isn't It Time Claude<br><em>Made You Money?</em></h1>
+  <p class="hero-sub">The step-by-step playbook that shows content creators and entrepreneurs exactly how to turn their Claude skills into a real, recurring income — starting this week.</p>
+
+  <div class="price-pill">
+    <span class="price-was">$97</span>
+    <span class="price-now">$19</span>
+    <span class="price-save">80% OFF</span>
+  </div>
+
+  <br>
+
+  <a class="hero-cta" href="https://keloshiogwemue.gumroad.com/l/tfezov" target="_blank">
+    Yes, I Want This — Get Instant Access for $19 →
+  </a>
+  <p class="hero-micro">Instant PDF download · 30-day money-back guarantee · <span>No tech skills required</span></p>
+
+  <div class="hero-badges">
+    <div class="badge"><span class="badge-icon">📖</span> 170 Pages</div>
+    <div class="badge"><span class="badge-icon">💼</span> 8 Income Streams</div>
+    <div class="badge"><span class="badge-icon">📋</span> 50 Service Templates</div>
+    <div class="badge"><span class="badge-icon">🗓️</span> 90-Day Action Plan</div>
+    <div class="badge"><span class="badge-icon">⚡</span> Start Earning This Week</div>
+  </div>
+</section>
+
+<!-- ═══════════════ PAIN ═══════════════ -->
+<section class="section pain">
+  <div class="section-inner">
+    <div class="eyebrow">The Honest Question</div>
+    <h2>You've been using Claude for a while now.<br><em>So why hasn't it made you any money?</em></h2>
+    <p class="section-sub">It's not because Claude can't generate income. It's because nobody showed you the specific paths that actually work.</p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😩</div>
+        <div>
+          <h3>You use Claude daily — but only for yourself</h3>
+          <p>You write faster, think clearer, create more. But the value stays with you. No client ever pays for what only you experience.</p>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🌀</div>
+        <div>
+          <h3>You've seen the "make money with AI" posts — and didn't trust them</h3>
+          <p>Screenshots of $10K days with zero explanation of how. You're not naive. You know hype when you see it. You want the real system.</p>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">⏳</div>
+        <div>
+          <h3>You're creating content but monetization feels far away</h3>
+          <p>You're posting, building, growing. But you need income now — not when you hit 10,000 followers. You need a faster path.</p>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🧩</div>
+        <div>
+          <h3>You have the skills — you just don't have the system</h3>
+          <p>You can write. You can create. You understand Claude. What you're missing isn't talent. It's the framework that connects your skills to a paying client.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROMISE ═══════════════ -->
+<section class="section promise">
+  <div class="section-inner">
+    <div class="eyebrow" style="color:#86EFAC;">The Promise</div>
+    <h2>What if you had a <em>complete, honest blueprint</em> — not just inspiration?</h2>
+    <p class="promise-body">
+      Not "here's how someone else did it." Not vague advice about "building your brand." I mean a <strong>day-by-day plan</strong> with the exact service packages to offer, the exact outreach messages to send, the exact pricing to charge, and the exact Claude workflows to deliver everything — <strong>starting this week.</strong>
+      <br><br>
+      That's what <em>Making Money with Claude</em> is. A 170-page playbook documenting 8 proven income paths, built for content creators and entrepreneurs who want to earn with the tool they're already using — without quitting their job, building a massive audience, or learning to code.
+      <br><br>
+      <strong>The tool is already in your hands. This book shows you what to do with it.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════ WHAT'S INSIDE ═══════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">What's Inside</div>
+    <h2>8 Chapters. 8 Income Paths.<br><em>One Clear System.</em></h2>
+    <p class="section-sub">Every chapter is a complete income blueprint — not an overview, a step-by-step guide you can act on the day you read it.</p>
+
+    <div class="chapters">
+      <div class="chapter-row">
+        <div class="chapter-num">1</div>
+        <div class="chapter-body">
+          <span class="chapter-tag tag-strategy">Foundation</span>
+          <h3>The Monetization Mindset — From User to Earner</h3>
+          <p>The exact shift that separates people who earn with Claude from people who just use it. Includes: your Skill-to-Service Mapping, the 3-method pricing framework, and your Ideal Client Profile.</p>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="chapter-num">2</div>
+        <div class="chapter-body">
+          <span class="chapter-tag tag-fast">Fast Cash</span>
+          <h3>Freelancing with Claude — First Client in 30 Days</h3>
+          <p>8 fully documented freelance income cards (writing, chatbots, consulting, training, and more) — each with startup steps, income range, and the exact Claude workflow behind delivery.</p>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="chapter-num">3</div>
+        <div class="chapter-body">
+          <span class="chapter-tag tag-passive">Passive Income</span>
+          <h3>Digital Products — Build Once, Sell Forever</h3>
+          <p>The 14-Day Launch System. How to go from idea to live product in 2 weeks — including the sales page formula that converts, pricing psychology, and where to distribute for maximum reach.</p>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="chapter-num">4</div>
+        <div class="chapter-body">
+          <span class="chapter-tag tag-scale">Premium</span>
+          <h3>Consulting & Coaching — $200–$500 Per Hour</h3>
+          <p>How to position yourself as an AI strategy consultant even without a big reputation. The 4-phase consulting engagement structure that commands premium rates from day one.</p>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="chapter-num">5</div>
+        <div class="chapter-body">
+          <span class="chapter-tag tag-scale">Scale</span>
+          <h3>The Agency Model — Beyond the Time Ceiling</h3>
+          <p>How to productize your services so they don't require you to do every task. The 3 agency models, when to hire your first contractor, and how to build a $100K+ business.</p>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="chapter-num">6</div>
+        <div class="chapter-body">
+          <span class="chapter-tag tag-scale">Long Game</span>
+          <h3>SaaS & AI-Powered Tools — The Highest Ceiling</h3>
+          <p>How to identify a niche problem and build an AI-powered tool around it — with or without coding. The validation method that tells you if your idea will sell before you build anything.</p>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="chapter-num">7</div>
+        <div class="chapter-body">
+          <span class="chapter-tag tag-passive">Passive</span>
+          <h3>Passive Income — Prompt Packs, Affiliates & Licensing</h3>
+          <p>The 4 Claude passive income streams with the best effort-to-return ratio. Includes the Prompt Pack Creator system, affiliate program directory, and how to license your Claude systems to other businesses.</p>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="chapter-num">8</div>
+        <div class="chapter-body">
+          <span class="chapter-tag tag-fast">Action Plan</span>
+          <h3>The 90-Day Launch Plan — Day by Day to $10K</h3>
+          <p>Not "Month 1: Build your skills." The actual Day 1 through Day 90 actions — what to do, in what order, for how long each day. The most actionable chapter in any AI income guide I've written.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ BONUSES ═══════════════ -->
+<section class="section" style="background:var(--light);padding-top:0;">
+  <div class="section-inner wide">
+    <div class="eyebrow">What Else You Get</div>
+    <h2>Three Appendices That Are Worth<br><em>The Price Alone</em></h2>
+
+    <div class="bonuses-grid">
+      <div class="bonus-card">
+        <div class="bonus-icon">📦</div>
+        <div class="bonus-title">50 Done-For-You Service Packages</div>
+        <div class="bonus-desc">50 named, priced, and described service packages across content, technical, consulting, training, and digital products. Copy the package name, deliverables, and pricing. Customize for your client. Sell it.</div>
+        <div class="bonus-val">Valued at $47 — included free</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">📝</div>
+        <div class="bonus-title">Proposal, Contract & Invoice Templates</div>
+        <div class="bonus-desc">The exact proposal structure that closes deals. A contract essentials checklist so nothing slips through the cracks. And a Claude prompt that drafts your service agreement in 10 minutes.</div>
+        <div class="bonus-val">Valued at $37 — included free</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">🗺️</div>
+        <div class="bonus-title">Income Diversification Roadmap</div>
+        <div class="bonus-desc">The exact sequence to add income streams without burning out. When to add each stream, what foundation it requires, and why the order matters. This is how you build to $10K+/month sustainably.</div>
+        <div class="bonus-val">Valued at $27 — included free</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOR WHO ═══════════════ -->
+<section class="section for-who">
+  <div class="section-inner">
+    <div class="eyebrow">Is This For You?</div>
+    <h2>Honest About <em>Who This Is For</em><br>— And Who It Isn't</h2>
+
+    <div class="who-grid">
+      <div class="who-card yes">
+        <div class="who-title">✅ This is for you if...</div>
+        <ul class="who-list">
+          <li><span>You use Claude regularly and want to start earning from it</span></li>
+          <li><span>You're a content creator who wants income beyond ads and sponsorships</span></li>
+          <li><span>You're an entrepreneur who wants to offer AI-powered services</span></li>
+          <li><span>You're employed and want a side income that could replace your salary</span></li>
+          <li><span>You want a step-by-step plan — not vague "build your personal brand" advice</span></li>
+          <li><span>You're willing to do real work to build something real</span></li>
+        </ul>
+      </div>
+      <div class="who-card no">
+        <div class="who-title">❌ This is NOT for you if...</div>
+        <ul class="who-list">
+          <li><span>You're looking for a "passive income with zero effort" shortcut</span></li>
+          <li><span>You haven't used Claude yet (start with Book 1 in this series)</span></li>
+          <li><span>You want a get-rich-quick scheme with fake screenshots</span></li>
+          <li><span>You're not willing to take any action outside of reading</span></li>
+          <li><span>You need a developer-specific technical API guide (that's Book 3)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Early Reader Reactions</div>
+    <h2>What People Are Saying<br><em>After Reading It</em></h2>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I've spent hundreds on online business courses that gave me motivation and no plan. This $19 guide gave me a clearer, more specific roadmap to earning online than anything I've bought before. I sent my first client proposal using the template in Chapter 2 on the same day I finished reading it."</p>
+        <div class="testi-author">David R.</div>
+        <div class="testi-role">Content Creator & Former Marketing Manager</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Chapter 8 is worth 10x the price alone. It's not 'build your skills' or 'create your offer.' It literally tells you what to do on Day 1, Day 2, Day 3. I've never seen a business guide this specific. It's like someone handed me a map after I'd been walking in circles for a year."</p>
+        <div class="testi-author">Amara N.</div>
+        <div class="testi-role">Entrepreneur & Content Creator</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The 50 service packages in the appendix are ridiculous value. I literally copied the 'Content Sprint Package,' adjusted the price, and sent it as my offer to three potential clients. That's not something you get in a course. That's something a business consultant would charge you $2,000 to produce."</p>
+        <div class="testi-author">James W.</div>
+        <div class="testi-role">Freelance Copywriter & Creator</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I was skeptical because it was so cheap. Surely a $19 guide can't be serious. I was wrong. The consulting chapter alone changed how I think about my expertise. I realized I was giving away for free what companies would pay real money for. That mindset shift is priceless."</p>
+        <div class="testi-author">Sarah M.</div>
+        <div class="testi-role">Online Entrepreneur & Coach</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AUTHOR ═══════════════ -->
+<section class="section author">
+  <div class="section-inner">
+    <div class="author-inner">
+      <div class="author-left">
+        <div class="eyebrow" style="color:#86EFAC;">About the Author</div>
+        <h2>Written by<br><em>KellyDaniel Oshiogwemue</em></h2>
+        <p class="author-body">
+          I'm the founder of <strong>Learngency LLC</strong> — a company built around one belief: that AI literacy is the most valuable skill of this decade, and it should be accessible to everyone.
+          <br><br>
+          I've spent thousands of hours working with Claude — building systems, writing content, consulting businesses, and documenting what actually works versus what sounds good on a YouTube thumbnail.
+          <br><br>
+          This book is the honest version. The one I wish existed when I started. <strong>No fabricated income screenshots. No vague inspiration. Just the exact system, step by step.</strong>
+        </p>
+      </div>
+      <div class="author-right">
+        <h3>Why Trust This Guide</h3>
+        <ul class="cred-list">
+          <li>Founder of Learngency LLC — AI education company</li>
+          <li>Creator of the Claude Mastery Playbook 8-book series</li>
+          <li>Documented 8 real income paths with honest assessments</li>
+          <li>Every framework tested and refined before publishing</li>
+          <li>No hype, no fake screenshots, no vague advice</li>
+          <li>Built for creators and entrepreneurs — not developers</li>
+          <li>Backed by a 30-day money-back guarantee</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ OBJECTIONS ═══════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Honest Answers</div>
+    <h2>The Questions You're<br><em>Probably Already Asking</em></h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Do I need any technical skills to use this?</div>
+        <p class="faq-a">No. This book is written for content creators and entrepreneurs — not developers. The income paths that require technical skills (like building chatbots) include the no-code tool options and a clear note on which level of technical knowledge is required. Most paths need nothing beyond knowing how to use Claude — which you already do.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this just another "make money with AI" hype guide?</div>
+        <p class="faq-a">Genuinely no — and I understand why you're asking. Most guides in this space are either vague ("build your personal brand!") or fake (income screenshots with no explanation). This book is 170 pages of specific, step-by-step frameworks. Chapter 2 alone includes 8 fully documented income cards with startup steps, income ranges, and the exact Claude workflow for each. You can verify the quality of the thinking before you buy from the free thread content I've posted.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">I already have a job. Can I realistically do this on the side?</div>
+        <p class="faq-a">Yes — and the 90-Day Plan in Chapter 8 is specifically designed for 1–3 hours of daily action, not a full-time commitment. The freelancing and digital product paths in particular are well-suited to part-time execution. Many people start on the side and transition full-time once the income is consistent enough.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why is it only $19 if it's so valuable?</div>
+        <p class="faq-a">Two reasons. First, I'm just launching and I want this in as many hands as possible — reviews and word-of-mouth matter more right now than margin. Second, I believe pricing should match accessibility. The people who need this most are often the ones who can't afford a $500 course. The price goes up as the reviews come in. $19 is the launch price, not the permanent price.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I don't have an audience or any clients yet?</div>
+        <p class="faq-a">Most of the paths in this book start from zero — that's the whole point. Chapter 2 on freelancing specifically assumes no existing audience, no reviews, no social following. It walks you through how to build your portfolio, find your first client through outreach, and deliver well enough to earn a testimonial. The cold outreach templates and proposal templates are in the appendix for exactly this situation.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the refund policy?</div>
+        <p class="faq-a">30-day money-back guarantee, no questions asked. If you read it, try the approaches, and genuinely feel it didn't deliver the value I promised — email me and I'll refund you in full. I'd rather you trust me enough to buy than fear wasting $19.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GUARANTEE ═══════════════ -->
+<section class="section" style="background:var(--light);">
+  <div class="section-inner">
+    <div class="guarantee">
+      <div class="guarantee-icon">🛡️</div>
+      <h3>The 30-Day<br>Money-Back Guarantee</h3>
+      <p>Read it. Try it. If you don't feel it was worth every penny of the $19, email me within 30 days and I'll refund you immediately. No questions. No hoops to jump through. No hard feelings.<br><br>I'm that confident in what's inside.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FINAL CTA ═══════════════ -->
+<section class="final-cta">
+  <h2>The Tool Is Already in Your Hands.<br>It's Time to Make It <em>Pay You.</em></h2>
+  <p>Stop using Claude just for yourself. Start delivering value that others will pay for. The system is here. The plan is ready. The only thing missing is your decision.</p>
+
+  <div class="cta-box">
+    <div class="cta-price-row">
+      <span class="cta-was">$97</span>
+      <span class="cta-now">$19</span>
+      <span class="cta-period">one-time · instant access</span>
+    </div>
+
+    <a class="big-cta" href="https://keloshiogwemue.gumroad.com/l/tfezov" target="_blank">
+      Get Instant Access — $19 →
+    </a>
+
+    <p class="cta-sub">🔒 Secure checkout via Gumroad · <span>Instant PDF delivery</span> · 30-day guarantee</p>
+  </div>
+
+  <div class="includes-strip">
+    <div class="inc-item">170-Page Playbook</div>
+    <div class="inc-item">8 Income Stream Blueprints</div>
+    <div class="inc-item">50 Service Package Templates</div>
+    <div class="inc-item">90-Day Action Plan</div>
+    <div class="inc-item">Proposal & Contract Templates</div>
+    <div class="inc-item">Income Roadmap</div>
+  </div>
+</section>
+
+<script>
+// Sticky bar appears after user scrolls past hero
+const stickyBar = document.getElementById('stickyBar');
+const hero = document.querySelector('.hero');
+
+const observer = new IntersectionObserver(([entry]) => {
+  if (!entry.isIntersecting) {
+    stickyBar.classList.add('visible');
+  } else {
+    stickyBar.classList.remove('visible');
+  }
+}, { threshold: 0 });
+
+observer.observe(hero);
+</script>
+
+</body>
+</html>
